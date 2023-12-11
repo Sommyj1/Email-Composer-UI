@@ -59,10 +59,15 @@ Draft Support: Enables users to save drafts of their email compositions for late
 
 
 ## Technologies Used
+
 •	HTML: Markup language for structuring the email composer UI.
+
 •	CSS: Styling language for designing a visually appealing interface.
+
 •	JavaScript: Dynamic scripting for interactive user experiences.
+
 •	Python: Backend scripting language for server-side functionalities.
+
 •	API: Integration with email sending API for seamless communication.
 
 ## Getting Started
@@ -70,27 +75,39 @@ Draft Support: Enables users to save drafts of their email compositions for late
 Include the necessary HTML, CSS, and JavaScript files in your project. Ensure that the styles and scripts are linked appropriately:
 
 <!DOCTYPE html>
+
 <html lang="en">
+  
 <head>
+  
   <meta charset="UTF-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <link rel="stylesheet" href="email-composer.css">
+  
   <title>Email Composer</title>
+  
 </head>
+
 <body>
+  
   <!-- Email Composer UI container -->
+  
   <div id="emailComposerContainer"></div>
 
   <script src="email-composer.js"></script>
+  
 </body>
+
 </html>
 
 ## Back-end
 1.	Set up a Python environment on your server.
-2.	
-3.	Configure the server to handle email sending and data storage.
-4.	
-5.	Ensure API keys and credentials are securely managed.
+   
+2.	Configure the server to handle email sending and data storage.
+   
+3.	Ensure API keys and credentials are securely managed.
    
 ## Configuration
 Adjust the Email Composer UI to your requirements using configuration options
@@ -110,23 +127,6 @@ const emailComposer = new EmailComposer({
 ## Usage
 
 Integrate the Email Composer UI into your application and handle user interactions:
-
-const emailComposer = new EmailComposer();
-
-// Example event handling
-
-emailComposer.on('compose', (data) => {
-
-  // Handle email composition
-  
-});
-
-emailComposer.on('send', (data) => {
-
-  // Handle sending the email
-  
-});
-
 
 ## javascript
 const emailComposer = new EmailComposer();
