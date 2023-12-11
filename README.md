@@ -89,26 +89,6 @@ Include the necessary HTML, CSS, and JavaScript files in your project. Ensure th
 </body>
 </html>
 
-## Configuration
-The Email Composer UI component can be configured with various options. Here's an example of how to configure the component:
-
-javascript
-
-<EmailComposerUI
-
-  maxRecipients={5}
-  
-  maxAttachments={3}
-  
-  allowDrafts={true}
-/>
-
-maxRecipients: Sets the maximum number of allowed recipients.
-
-maxAttachments: Specifies the maximum number of allowed attachments.
-
-allowDrafts: Enables or disables the ability to save drafts.
-
 ## Styling
 Customizing the appearance of the Email Composer UI can be done through CSS. The component exposes specific class names that can be targeted for styling:
 
