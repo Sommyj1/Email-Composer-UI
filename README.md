@@ -75,31 +75,18 @@ Draft Support: Enables users to save drafts of their email compositions for late
 Include the necessary HTML, CSS, and JavaScript files in your project. Ensure that the styles and scripts are linked appropriately:
 
 <!DOCTYPE html>
-
 <html lang="en">
-  
-<head>
-  
+<head> 
   <meta charset="UTF-8">
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
   <link rel="stylesheet" href="email-composer.css">
-  
   <title>Email Composer</title>
-  
 </head>
-
 <body>
-  
   <!-- Email Composer UI container -->
-  
   <div id="emailComposerContainer"></div>
-
   <script src="email-composer.js"></script>
-  
 </body>
-
 </html>
 
 ## Back-end
