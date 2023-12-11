@@ -43,9 +43,6 @@ Ensure proper API configurations for seamless email sending.
 
 npm install email-composer-ui
 
-## Usage
-To use the Email Composer UI in your project, import it into your component and include it in your template:
-
 ## Features
 
 User-friendly Interface: Provides an intuitive interface for composing email messages.
@@ -114,6 +111,23 @@ const emailComposer = new EmailComposer({
 
 Integrate the Email Composer UI into your application and handle user interactions:
 
+const emailComposer = new EmailComposer();
+
+// Example event handling
+
+emailComposer.on('compose', (data) => {
+
+  // Handle email composition
+  
+});
+
+emailComposer.on('send', (data) => {
+
+  // Handle sending the email
+  
+});
+
+
 ## javascript
 const emailComposer = new EmailComposer();
 
@@ -158,13 +172,3 @@ We welcome contributions from the community. Please read our contribution guidel
 This Email Composer UI component is licensed under the MIT License.
 
 ## Feel free to customize this template based on your project's specific details, and add or modify sections as needed.
-
-
-
-
-
-
-
-
-
-
