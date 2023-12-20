@@ -1,0 +1,42 @@
+/* your_style.css */
+body {
+    /* Set background image */
+    background-image: url('/static/images/photo1.jpg'); /* Adjust the path as needed */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Center the content vertically and horizontally */
+.Welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Adjust the height as needed */
+}
+
+/* Style the box */
+.WelcomeBox {
+    background-color: #3498db; /* Your desired background color */
+    color: #ffffff; /* White text color */
+    padding: 20px; /* Adjust the padding as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow */
+    border-radius: 10px; /* Optional: Add rounded corners */
+}
+
+.WelcomeHeading {
+    color: #ffffff; /* White text color */
+    text-align: center; /* Center the text */
+}
+
+/* Style the h1 */
+.Welcome h1 {
+    color: #ffffff; /* White text color */
+}
+
+/* Style the p tag */
+.Welcome p {
+    text-align: center; /* Center the text */
+    margin-top: 10px; /* Add some top margin */
+}
