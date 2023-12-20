@@ -1,4 +1,4 @@
-from email import create_app
+from composer import create_app
 
 app = create_app()
 
