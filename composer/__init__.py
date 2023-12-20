@@ -4,7 +4,7 @@ import os
 from os import path
 from flask_login import LoginManager
 from flask_migrate import Migrate
-
+from flask_bcrypt import Bcrypt
 
 db = SQLAlchemy()
 
@@ -13,6 +13,8 @@ def create_app():
     app.config['SECRET_KEY'] = 'Email-Composer'
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('MY_DATABASE_URL')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+    bcrypt = Bcrypt()
 
     # Initialize extensions
     db.init_app(app)
