@@ -1,0 +1,8 @@
+/* your_style.css */
+body {
+    /* Set background image */
+    background-image: url('/static/images/photo1.jpg'); /* Adjust the path as needed */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
