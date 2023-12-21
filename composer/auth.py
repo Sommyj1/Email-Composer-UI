@@ -1,7 +1,7 @@
-from flask import Blueprint, render_template, flash, redirect, url_for
+from flask import Blueprint, render_template, request, flash, redirect, url_for
 from .models import User
 from . import db
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import check_password_hash
 from .forms import LoginForm, SignupForm
 from flask_login import login_user, login_required, logout_user, current_user
 from flask_bcrypt import Bcrypt
@@ -20,11 +20,16 @@ def login():
 
         user = User.query.filter_by(email=email).first()
         if user and bcrypt.check_password_hash(user.password, password):
+            print("Login successful!")  # Add this line for debugging
             login_user(user, remember=remember)
             flash('Logged in successfully!', category='success')
-            return redirect(url_for('views.home'))
-        flash('Incorrect email or password. Please try again.', category='error')
+            return redirect(url_for('views.home'))  # Redirect to home page after successful login
+        else:
+            print("Login failed!")  # Add this line for debugging
+            flash('Incorrect email or password. Please try again.', category='error')
+
     return render_template("login.html", user=current_user, form=form)
+
 
 
 @auth.route('/logout')
@@ -54,4 +59,3 @@ def sign_up():
             return redirect(url_for('auth.login'))  # Redirect to login page
 
     return render_template("sign_up.html", user=current_user, form=form)
-

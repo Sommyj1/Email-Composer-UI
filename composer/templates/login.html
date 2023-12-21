@@ -20,7 +20,7 @@
                     {{ form.remember(class="form-check-input") }}
                     {{ form.remember.label(class="form-check-label", for="remember") }}
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                {{ form.submit(class="btn btn-primary btn-block") }}  {# Updated submit button #}
             </form>
             <div class="form-group mt-3 text-center">
                 <p class="signup-link">Forgot your password? <a href="/forgot-password" class="text-danger">Reset it here</a></p>
