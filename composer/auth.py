@@ -13,19 +13,28 @@ def login():
     form = LoginForm()
 
     if form.validate_on_submit():
+        print("Form validated successfully!")
         email = form.email.data
         password = form.password.data
         remember = form.remember.data
 
         user = User.query.filter_by(email=email).first()
-        if user and check_password_hash(user.password, password):
-            login_user(user, remember=remember)
-            flash('Logged in successfully!', category='success')
-            print("Redirecting to home...")
-            return redirect(url_for('views.home'))  # Redirect to home page after successful login
-        flash('Incorrect email or password. Please try again.', category='error')
+        if user:
+            print("User found in the database!")
+            if check_password_hash(user.password, password):
+                print("Password comparison successful!")
+                login_user(user, remember=remember)
+                flash('Logged in successfully!', category='success')
+                return redirect(url_for('views.home'))  # Redirect to home page after successful login
+            else:
+                print("Password comparison failed!")
+        else:
+            print("User not found in the database!")
 
-    print("Rendering login.html...")
+        flash('Incorrect email or password. Please try again.', category='error')
+    else:
+        print("Form validation failed!")
+
     return render_template("login.html", user=current_user, form=form)
 
 @auth.route('/logout')
