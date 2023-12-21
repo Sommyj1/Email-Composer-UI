@@ -1,16 +1,15 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from .models import User
 from . import db
-from werkzeug.security import check_password_hash
+from werkzeug.security import check_password_hash, generate_password_hash
 from .forms import LoginForm, SignupForm
 from flask_login import login_user, login_required, logout_user, current_user
-from flask_bcrypt import Bcrypt
 
 auth = Blueprint('auth', __name__)
-bcrypt = Bcrypt()
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
+    print(request.method)  # Print the request method
     form = LoginForm()
 
     if form.validate_on_submit():
@@ -19,18 +18,15 @@ def login():
         remember = form.remember.data
 
         user = User.query.filter_by(email=email).first()
-        if user and bcrypt.check_password_hash(user.password, password):
-            print("Login successful!")  # Add this line for debugging
+        if user and check_password_hash(user.password, password):
             login_user(user, remember=remember)
             flash('Logged in successfully!', category='success')
+            print("Redirecting to home...")
             return redirect(url_for('views.home'))  # Redirect to home page after successful login
-        else:
-            print("Login failed!")  # Add this line for debugging
-            flash('Incorrect email or password. Please try again.', category='error')
+        flash('Incorrect email or password. Please try again.', category='error')
 
+    print("Rendering login.html...")
     return render_template("login.html", user=current_user, form=form)
-
-
 
 @auth.route('/logout')
 @login_required
@@ -51,8 +47,7 @@ def sign_up():
         if User.query.filter_by(email=email).first():
             flash('Email already exists.', category='error')
         else:
-            hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
-            new_user = User(email=email, first_name=first_name, password=hashed_password)
+            new_user = User(email=email, first_name=first_name, password=generate_password_hash(password, method='pbkdf2:sha256', salt_length=8))
             db.session.add(new_user)
             db.session.commit()
             flash('Account created! Proceed to login.', category='success')

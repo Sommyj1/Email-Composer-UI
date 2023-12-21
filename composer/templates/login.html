@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="login-container p-4 rounded shadow" style="max-width: 400px;">
             <h1 class="login-heading text-center mb-4">Login to Email Composer</h1>
-            <form class="login-form" method="post" action="/login">
+            <form class="login-form" method="post" action="{{ url_for('auth.login') }}">
                 <div class="mb-3">
                     {{ form.email.label(class="form-label") }}
                     {{ form.email(class="form-control", placeholder="Enter your email", required=True) }}
@@ -20,7 +20,7 @@
                     {{ form.remember(class="form-check-input") }}
                     {{ form.remember.label(class="form-check-label", for="remember") }}
                 </div>
-                {{ form.submit(class="btn btn-primary btn-block") }}  {# Updated submit button #}
+                {{ form.submit(class="btn btn-primary btn-block") }}
             </form>
             <div class="form-group mt-3 text-center">
                 <p class="signup-link">Forgot your password? <a href="/forgot-password" class="text-danger">Reset it here</a></p>

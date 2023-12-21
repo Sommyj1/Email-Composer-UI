@@ -4,7 +4,7 @@ import os
 from os import path
 from flask_login import LoginManager
 from flask_migrate import Migrate
-from flask_bcrypt import Bcrypt
+from datetime import timedelta
 
 db = SQLAlchemy()
 
@@ -14,10 +14,17 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('MY_DATABASE_URL')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    bcrypt = Bcrypt()
-
     # Initialize extensions
     db.init_app(app)
+
+    # session timeout
+    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=1)
+
+    # Keep Sessions Alive
+    @app.before_request
+    def session_timeout():
+        session.permanent = True
+        app.permanent_session_lifetime = timedelta(hours=1)
     
     # Registering all blueprints
     from .views import views
