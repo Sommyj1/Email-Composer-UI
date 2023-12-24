@@ -5,7 +5,7 @@ from os import path
 from flask_login import LoginManager
 from flask_migrate import Migrate
 from datetime import timedelta
-from flask_mailman import Mail
+from flask_mailman import Mail, EmailMessage
 
 db = SQLAlchemy()
 
@@ -21,6 +21,13 @@ def create_app():
     db.init_app(app)
 
     # Initilizaing Flask-mailman
+    app.config["MAIL_SERVER"] = "smtp.fastmail.com"
+    app.config["MAIL_PORT"] = 465
+    app.config["MAIL_USERNAME"] = "joseph2blessing2015@fastmail.com"
+    app.config["MAIL_PASSWORD"] = "x7kn4xh72pyjye5z"
+    app.config["MAIL_USE_TLS"] = False
+    app.config["MAIL_USE_SSL"] = True
+
     mail.init_app(app)
 
     # session timeout
