@@ -47,7 +47,7 @@ def sign_up():
         if User.query.filter_by(email=email).first():
             flash('Email already exists.', category='error')
         else:
-            new_user = User(email=email, first_name=first_name, password=generate_password_hash(password, method='sha256', salt_length=8))
+            new_user = User(email=email, first_name=first_name, password=generate_password_hash(password, method='pbkdf2:sha256', salt_length=8))
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=True)
