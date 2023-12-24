@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, flash
 from flask_login import login_required, current_user
 from . import db
 from flask_mailman import EmailMessage
+from werkzeug.utils import secure_filename
 
 views = Blueprint('views', __name__)
 
@@ -31,6 +32,13 @@ def compose():
         )
 
         try:
+            # Attachments
+            attachment = request.files.get('attachment')
+            if attachment:
+                attachment_filename = secure_filename(attachment.filename)
+                attachment.save(attachment_filename)
+                msg.attach_file(attachment_filename)
+
             msg.send()
             flash('Email sent successfully', 'success')
         except Exception as e:

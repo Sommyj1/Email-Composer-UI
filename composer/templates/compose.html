@@ -1,10 +1,34 @@
 {% extends "base.html" %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Compose-Email{% endblock %}
 
 {% block content %}
-            <form method="POST">
-                <button type="submit" class="btn btn-primary btn-block">Compose-Email</button>
-            </form>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="sender_email">Your Email Address:</label>
+            <input type="email" class="form-control" id="sender_email" name="sender_email" required>
+        </div>
 
+        <div class="form-group">
+            <label for="recipient_email">Recipient's Email Address:</label>
+            <input type="email" class="form-control" id="recipient_email" name="recipient_email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="subject">Subject:</label>
+            <input type="text" class="form-control" id="subject" name="subject" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email_body">Compose Email:</label>
+            <textarea class="form-control" id="email_body" name="email_body" rows="5" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="attachment">Attach File:</label>
+            <input type="file" class="form-control-file" id="attachment" name="attachment">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send Email</button>
+    </form>
 {% endblock %}

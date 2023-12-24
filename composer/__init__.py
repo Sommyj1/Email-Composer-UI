@@ -5,7 +5,7 @@ from os import path
 from flask_login import LoginManager
 from flask_migrate import Migrate
 from datetime import timedelta
-from flask_mailman import Mail, EmailMessage
+from flask_mailman import Mail
 
 db = SQLAlchemy()
 
