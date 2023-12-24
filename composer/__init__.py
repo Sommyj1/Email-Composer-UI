@@ -5,8 +5,11 @@ from os import path
 from flask_login import LoginManager
 from flask_migrate import Migrate
 from datetime import timedelta
+from flask_mailman import Mail
 
 db = SQLAlchemy()
+
+mail = Mail()
 
 def create_app():
     app = Flask(__name__)
@@ -16,6 +19,9 @@ def create_app():
 
     # Initialize extensions
     db.init_app(app)
+
+    # Initilizaing Flask-mailman
+    mail.init_app(app)
 
     # session timeout
     app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=1)
